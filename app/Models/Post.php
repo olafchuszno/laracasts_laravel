@@ -18,22 +18,28 @@ class Post
 
     public static function all()
     {
-        // Return a collection of all the files from the posts directory in resources/ 
-        // (We are going to chain over that collection)
-        return collect(File::files(resource_path("posts")))
+        return cache()->rememberForever('posts.all', function () {
 
-        // Map through each file from the collection and parse them
-        ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+            // Return a collection of all the files from the posts directory in resources/ 
+            // (We are going to chain over that collection)
+            return collect(File::files(resource_path("posts")))
 
-        // map AGAIN, this time over the files we just parsed (now calling them documents),
-        // and finally, for each file we return a new Post object with all of the parsed file ($document) data
-        ->map(fn ($document) => new Post (
-            $document->title,
-            $document->excerpt,
-            $document->date,
-            $document->body(),
-            $document->slug
-        ));
+            // Map through each file from the collection and parse them
+            ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+
+            // map AGAIN, this time over the files we just parsed (now calling them documents),
+            // and finally, for each file we return a new Post object with all of the parsed file ($document) data
+            ->map(fn ($document) => new Post (
+                $document->title,
+                $document->excerpt,
+                $document->date,
+                $document->body(),
+                $document->slug
+            ))
+            // Sort the collection by each post object's date in a descending order
+            ->sortByDesc("date");
+
+        });
     }
 
     public static function find($slug)
