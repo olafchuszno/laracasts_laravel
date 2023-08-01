@@ -3,7 +3,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
+
 
 
 /*
@@ -19,24 +19,18 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
 
-
-    $document = YamlFrontMatter::parseFile(
-        resource_path("posts/my-fourth-post.html")
-    );
-
-    
-    // return view('posts');
+    // return a view with all of the posts (this was the playground)
+    return view('posts', ['posts' => Post::all()]);
 });
 
 Route::get('posts', function() {
-
+    // return a view with all of the posts
     return view('posts', ['posts' => Post::all()]);
 });
 
 Route::get('/posts/{post}', function ($slug) {
 
-    // Find a post by it's slug and pass it to a view called 'post'
-
+    // Find a post object by it's slug and pass it to the 'post' view
     return view('post', [
         'post' => Post::find($slug)
     ]);
