@@ -20,19 +20,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     // return a view with all of the posts (this was the playground)
-    return view('posts', ['posts' => Post::all()]);
+    return view('posts', [
+        'posts' => Post::all()
+    ]);
 });
 
 Route::get('posts', function() {
     // return a view with all of the posts
-    return view('posts', ['posts' => Post::all()]);
+    return view('posts', [
+        'posts' => Post::all()
+    ]);
 });
 
-Route::get('/posts/{post}', function ($id) {
+Route::get('posts/{post:slug}', function (Post $post) {
 
     // Find a post object by it's slug and pass it to the 'post' view. (If failed, Post throws an exception)
     return view('post', [
-        'post' => Post::findOrFail($id)
+        'post' => $post
     ]);
-    
 });
