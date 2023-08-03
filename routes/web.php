@@ -20,11 +20,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    // return a view with all of the posts (this was the playground)
+    /* I had a problem with loading the '/' route only executing 2 database queries like Jeffrey.
+    My mistake was trying to load '/posts' instead of '/' - (the index page '/') */
+
+
+    // return a view with all of the posts and their categories
     return view('posts', [
-        'posts' => Post::all()
+        'posts' => Post::with('category')->get()
     ]);
 });
+
+
 
 Route::get('posts', function() {
     // return a view with all of the posts
