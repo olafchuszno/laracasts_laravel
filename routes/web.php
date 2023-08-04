@@ -23,7 +23,7 @@ Route::get('/', function () {
 
     // return a view with all of the posts and their categories
     return view('posts', [
-        'posts' => Post::latest()->with(['category', 'author'])->get()
+        'posts' => Post::latest()->get()
     ]);
 });
 
