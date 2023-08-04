@@ -2,6 +2,7 @@
 
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    /* I had a problem with loading the '/' route only executing 2 database queries like Jeffrey.
-    My mistake was trying to load '/posts' instead of '/' - (the index page '/') */
-
-
     // return a view with all of the posts and their categories
     return view('posts', [
-        'posts' => Post::with('category', 'user')->get()
+        'posts' => Post::latest()->with(['category', 'author'])->get()
     ]);
 });
 
@@ -52,5 +49,12 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 
     return view('posts', [
         'posts' => $category->posts
+    ]);
+});
+
+Route::get('/authors/{author:username}', function (User $author) {
+
+    return view('posts', [
+        'posts' => $author->posts
     ]);
 });
