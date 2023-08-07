@@ -23,22 +23,25 @@ Route::get('/', function () {
 
     // return a view with all of the posts and their categories
     return view('posts', [
-        'posts' => Post::latest()->get()
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
     ]);
 });
 
 
 
 Route::get('posts', function() {
-    // return a view with all of the posts
+    // return a view with all of the posts and their categories
     return view('posts', [
-        'posts' => Post::all()
+        'posts' => Post::all(),
+        'categories' => Category::all()
     ]);
 });
 
 Route::get('posts/{post:slug}', function (Post $post) {
 
-    // Find a post object by it's slug and pass it to the 'post' view. (If failed, Post throws an exception)
+    // Find a post object by it's slug and pass it to the 'post' view. 
+    // (If failed, Post throws an exception)
     return view('post', [
         'post' => $post
     ]);
@@ -48,7 +51,9 @@ Route::get('posts/{post:slug}', function (Post $post) {
 Route::get('/categories/{category:slug}', function (Category $category) {
 
     return view('posts', [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
 });
 
