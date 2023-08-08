@@ -21,9 +21,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+    $posts = Post::latest();
+    
+    if (request('search')) {
+        $posts
+            ->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('body', 'like', '%' . request('search') . '%');
+    }
+
     // return a view with all of the posts and their categories
     return view('posts', [
-        'posts' => Post::latest()->get(),
+        'posts' => $posts->get(),
         'categories' => Category::all()
     ]);
 })->name('home');
