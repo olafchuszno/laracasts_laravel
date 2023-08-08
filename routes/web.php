@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 
 
@@ -19,22 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    $posts = Post::latest();
-    
-    if (request('search')) {
-        $posts
-            ->where('title', 'like', '%' . request('search') . '%')
-            ->orWhere('body', 'like', '%' . request('search') . '%');
-    }
-
-    // return a view with all of the posts and their categories
-    return view('posts', [
-        'posts' => $posts->get(),
-        'categories' => Category::all()
-    ]);
-})->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
 
 
 
@@ -46,14 +32,7 @@ Route::get('posts', function() {
     ]);
 });
 
-Route::get('posts/{post:slug}', function (Post $post) {
-
-    // Find a post object by it's slug and pass it to the 'post' view. 
-    // (If failed, Post throws an exception)
-    return view('post', [
-        'post' => $post
-    ]);
-});
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 
 Route::get('/categories/{category:slug}', function (Category $category) {
