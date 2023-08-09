@@ -13,7 +13,7 @@ class PostController extends Controller
     {
         // return a view with all of the posts and their categories
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
+            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(),
         ]);
     }
 
@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         // Find a post object by it's slug and pass it to the 'post' view. 
         // (If failed, Post throws an exception)
-        return view('post.show', [
+        return view('posts.show', [
             'post' => $post
         ]);
     }
