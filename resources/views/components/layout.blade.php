@@ -29,7 +29,7 @@
 
                 @else
                     <a href="/register" class="text-s font-bold uppercase">Register</a>
-                    <a href="/login" class="text-s font-semibold text-blue-500 ml-6">Login</a>
+                    <a href="/login" class="text-s font-bold uppercase ml-6 mr-2">Log in</a>
                 @endauth
 
 
