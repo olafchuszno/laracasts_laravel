@@ -1,8 +1,10 @@
 <x-layout>
-    <x-panel class="max-w-sm mx-auto mt-10 bg-gray-100">
-        <section class="px-6 py-8 max">
-            
-            <form method="POST" action="/admin/posts">
+    <section class="px-6 py-8 max max-w-md mx-auto">
+
+        <h1 class="text-lg font-bold mb-4 text-center">Publish New Post</h1>
+        
+        <x-panel class="max-w-md mx-auto mt-10 bg-gray-100">
+            <form method="POST" action="/admin/posts" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-6">
@@ -42,6 +44,26 @@
                     >
 
                     @error('slug')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }} </p>
+                    @enderror
+
+                </div>
+
+                <div class="mb-6">
+                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                            for="thumbnail"
+                    >
+                        Thumbnail
+                    </label>
+                    
+                    <input class="border border-gray-400 p-2 w-full"
+                            type="file"
+                            name="thumbnail"
+                            id="thumbnail"
+                            required
+                    >
+
+                    @error('thumbnail')
                         <p class="text-red-500 text-xs mt-2">{{ $message }} </p>
                     @enderror
 
@@ -114,7 +136,7 @@
 
                 <x-submit-button>Publish</x-submit-button>
             </form>
+        </x-panel>
 
-        </section>
-    </x-panel>
+    </section>
 </x-layout>
