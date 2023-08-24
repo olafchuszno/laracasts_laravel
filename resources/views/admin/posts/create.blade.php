@@ -7,7 +7,7 @@
 
                 <x-form.input name="slug" />
 
-                <x-form.input name="thumbnail" type="file" />
+                <x-form.input name="thumbnail" type="file" required/>
 
                 <x-form.textarea name="excerpt" />
 
@@ -17,7 +17,7 @@
 
                     <x-form.label name="category" />
                     
-                    <select name="category_id" id="category_id">
+                    <select name="category_id" id="category_id" class="px-2 py-1">
                         @foreach (\App\Models\Category::all() as $category)
                             <option 
                                 value="{{ $category->id }}"

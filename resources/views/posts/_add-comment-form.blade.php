@@ -17,7 +17,7 @@
 
             <div class="mt-6">
                 <textarea name="body"
-                class="w-full text-sm focus:outline-none focus:ring" 
+                class="w-full text-sm px-2 py-1 focus:outline-none focus:ring" 
                 id="body" 
                 rows="5" 
                 placeholder="Quick, think of something to say!"
@@ -29,8 +29,8 @@
                 <span>{{ $message }}</span>
             @enderror
 
-            <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
-                <x-submit-button>Post</x-submit-button>
+            <div class="flex justify-end mt-6 border-t border-gray-200">
+                <x-form.button>Post</x-form.button>
             </div>
 
         </form>
