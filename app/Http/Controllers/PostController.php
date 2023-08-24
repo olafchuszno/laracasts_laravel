@@ -13,6 +13,9 @@ class PostController extends Controller
 
     public function index()
     {
+
+        ddd(new Post());
+
         // return a view with all of the posts and their categories
         return view('posts.index', [
             'posts' => Post::latest()->filter(
