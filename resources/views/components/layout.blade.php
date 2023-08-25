@@ -22,7 +22,7 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center">
+            <div class="mt-8 md:mt-0 flex justify-between flex-shrink-1 items-center" style="width: 300px;">
                 @auth
                     <x-dropdown>
                         <x-slot name="trigger">
@@ -33,6 +33,8 @@
                             <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">Dashboard</x-dropdown-item>
                             <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
                         @endadmin
+
+                        <x-dropdown-item href="/posts/bookmarks" :active="request()->is('posts/bookmarked')">Bookmarks</x-dropdown-item>
 
                         <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>
 
