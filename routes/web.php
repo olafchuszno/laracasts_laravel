@@ -27,9 +27,12 @@ use App\Http\Controllers\PostCommentsController;
 */
 
 Route::get('/', [PostController::class, 'index'])->name('home');
-
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
+
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
+
+Route::get('posts/bookmarks', [BookmarkController::class, 'index'])->middleware('auth');
+Route::post('posts/{post:slug}/bookmarks', [BookmarksController::class, 'store'])->middleware('auth');
 
 Route::post('newsletter', NewsletterController::class);
 
