@@ -12,4 +12,14 @@ class BookmarkController extends Controller
     {
         ddd("Bookmarks index");
     }
+
+    public function store()
+    {
+        ddd("Bookmarks index");
+    }
+
+    public function destroy()
+    {
+        ddd("Bookmarks index");
+    }
 }
