@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Services\Newsletter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminPostController;
@@ -31,8 +32,8 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
-Route::get('posts/bookmarks', [BookmarkController::class, 'index'])->middleware('auth');
-Route::post('posts/{post:slug}/bookmarks', [BookmarksController::class, 'store'])->middleware('auth');
+Route::get('bookmarks', [BookmarkController::class, 'index']);
+Route::post('posts/{post:slug}/bookmarks', [BookmarkController::class, 'store'])->middleware('auth');
 
 Route::post('newsletter', NewsletterController::class);
 
