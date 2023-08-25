@@ -32,15 +32,16 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
-Route::get('bookmarks', [BookmarkController::class, 'index']);
+Route::get('bookmarks', [BookmarkController::class, 'index'])->middleware('auth');
 Route::post('posts/{post:slug}/bookmarks', [BookmarkController::class, 'store'])->middleware('auth');
+Route::delete('posts/{post:slug}/bookmarks', [BookmarkController::class, 'destroy'])->middleware('auth');
 
 Route::post('newsletter', NewsletterController::class);
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
