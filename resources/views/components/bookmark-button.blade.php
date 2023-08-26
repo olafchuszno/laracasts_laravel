@@ -1,7 +1,7 @@
 @props(['post'])
 
 <div>
-    <form action="posts/{{ $post->slug }}/bookmarks" method="POST">
+    <form action="/posts/{{ $post->slug }}/bookmarks" method="POST">
         @csrf
         @method('store')
         
