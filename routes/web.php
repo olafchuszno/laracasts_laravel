@@ -33,7 +33,7 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
 Route::get('bookmarks', [BookmarkController::class, 'index'])->middleware('auth');
-Route::post('posts/{post:slug}/bookmarks', [BookmarkController::class, 'store'])->middleware('auth');
+Route::store('posts/{post:slug}/bookmarks', [BookmarkController::class, 'store'])->middleware('auth');
 Route::delete('posts/{post:slug}/bookmarks', [BookmarkController::class, 'destroy'])->middleware('auth');
 
 Route::post('newsletter', NewsletterController::class);
