@@ -6,7 +6,7 @@
         @method('store')
         
         <button type="submit"
-            class="px-3 py-1 border border-red-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+            class="px-3 py-1 border flex flex-grow-1 border-yellow-300 bg-yellow-200 rounded-full text-gray-500 text-xs uppercase font-semibold"
             style="font-size: 10px"
         >
             Add Post to bookmarked
