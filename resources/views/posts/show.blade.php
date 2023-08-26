@@ -38,9 +38,14 @@
                             Back to Posts
                         </a>
 
-                        <div class="space-x-2">
-                            <x-category-button :category="$post->category" />
+                        <div class="flex max-w-200 gap-2">
+                            <div>
+                                <x-category-button :category="$post->category" />
+                            </div>
+
+                            <x-bookmark-button :post="$post" />
                         </div>
+                        
                     </div>
 
                     <h1 class="font-bold text-3xl lg:text-4xl mb-10">
