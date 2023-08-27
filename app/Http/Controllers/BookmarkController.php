@@ -25,10 +25,6 @@ class BookmarkController extends Controller
     public function store(Post $post)
     {
 
-        // dd(Bookmark::select('*')->
-        // where('post_id', '=', $post->id)->
-        // where('user_id', '=', request()->user()->id));
-
         // restrict duplicate bookmarks with an error message
         if (count(Bookmark::select('*')->
             where('post_id', '=', $post->id)->
@@ -48,7 +44,7 @@ class BookmarkController extends Controller
         return back()->with('success', "You've bookmarked the post");
     }
 
-    public function destroy()
+    public function destroy(Post $post)
     {
         ddd("Bookmarks index");
     }

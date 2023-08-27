@@ -34,7 +34,7 @@ Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store
 
 Route::get('bookmarks', [BookmarkController::class, 'index'])->middleware('auth');
 Route::post('posts/{post:slug}/bookmarks', [BookmarkController::class, 'store'])->middleware('auth');
-Route::delete('posts/{post:id}/bookmarks', [BookmarkController::class, 'destroy'])->middleware('auth');
+Route::delete('bookmarks/{post:id}', [BookmarkController::class, 'destroy'])->middleware('auth');
 
 Route::post('newsletter', NewsletterController::class);
 
