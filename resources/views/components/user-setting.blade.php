@@ -12,7 +12,7 @@
 
             <ul>
                 <li>
-                    <a href="/admin/posts" class="{{ request()->is('admin/posts') ? 'text-blue-500' : '' }}">
+                    <a href="/bookmarks" class="{{ request()->is('bookmarks') ? 'text-blue-500' : '' }}">
                         Bookmarks
                     </a>
                 </li>
