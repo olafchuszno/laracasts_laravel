@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -35,7 +36,8 @@ class AdminPostController extends Controller
     public function edit(Post $post)
     {
         return view('admin.posts.edit', [
-            'post' => $post
+            'post' => $post,
+            'authors' => User::all()
         ]);
     }
 
