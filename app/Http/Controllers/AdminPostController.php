@@ -76,7 +76,8 @@ class AdminPostController extends Controller
             'excerpt' => 'required',
             'body' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'published_at' => 'required'
+            'published_at' => 'required',
+            'author_id' => ['required', Rule::exists('users', 'id')]
         ]);
     }
 
