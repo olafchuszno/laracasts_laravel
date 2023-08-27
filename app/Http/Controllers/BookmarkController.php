@@ -41,11 +41,22 @@ class BookmarkController extends Controller
             'post_id' => $post->id
         ]);
 
-        return back()->with('success', "You've bookmarked the post");
+        return back()->with('success', "You bookmarked the post");
     }
 
     public function destroy(Post $post)
     {
-        ddd("Bookmarks index");
+
+        // Validate the bookmark
+        if (! count($bookmark = Bookmark::select('*')->where('post_id', '=', $post->id)->where('user_id', '=', auth()->id())->get()
+        )) {
+            return back()->with('failure', "The bookmark doesn't exists");
+        }
+
+        // Delete the bookmark
+        $bookmark[0]->delete();
+
+        // Redirect the user with a message
+        return back()->with('success', 'The bookmark was deleted');
     }
 }
