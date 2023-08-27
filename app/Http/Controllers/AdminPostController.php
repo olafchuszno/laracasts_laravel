@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -37,6 +38,7 @@ class AdminPostController extends Controller
     {
         return view('admin.posts.edit', [
             'post' => $post,
+            'categories' => Category::all(),
             'authors' => User::all()
         ]);
     }
