@@ -24,13 +24,28 @@ class BookmarkController extends Controller
 
     public function store(Post $post)
     {
+
+        // dd(Bookmark::select('*')->
+        // where('post_id', '=', $post->id)->
+        // where('user_id', '=', request()->user()->id));
+
+        // restrict duplicate bookmarks with an error message
+        if (count(Bookmark::select('*')->
+            where('post_id', '=', $post->id)->
+            where('user_id', '=', request()->user()->id)->
+            get()
+        )) {
+            // The bookmark already exists, redirect the user back with a message
+            return back()->with('failure', 'The bookmark already exists');
+        }
+
         // associate the post' id with the user's id on the bookmarks table
         Bookmark::create([
             'user_id' => request()->user()->id,
             'post_id' => $post->id
         ]);
 
-        return back();
+        return back()->with('success', "You've bookmarked the post");
     }
 
     public function destroy()
