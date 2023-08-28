@@ -43,17 +43,17 @@
 
                 <x-form.label name="author" />
 
-                <select name="author_id" id="author_id">
+                <select name="user_id" id="user_id">
                     @foreach ($authors as $author)
-                        <option value="{{ old('author_id') ?? $author->id }}"
-                            {{ old('author_id', $post->user_id) == $author->id ? 'selected' : '' }}
+                        <option value="{{ old('user_id') ?? $author->id }}"
+                            {{ old('user_id', $post->user_id) == $author->id ? 'selected' : '' }}
                         >
                             {{ ucwords($author->username) }}
                         </option>
                     @endforeach
                 </select>
 
-                <x-form.error name="author_id" />
+                <x-form.error name="user_id" />
 
             </x-form.field>
 
