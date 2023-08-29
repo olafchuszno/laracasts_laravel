@@ -13,8 +13,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
-
-
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +44,8 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest')-
 Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest');
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::get('profile', [ProfileController::class, 'edit'])->middleware('auth');
 
 
 // Admin
