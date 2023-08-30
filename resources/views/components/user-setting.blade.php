@@ -16,6 +16,11 @@
                         Bookmarks
                     </a>
                 </li>
+                <li>
+                    <a href="/profile" class="{{ request()->is('profile') ? 'text-blue-500' : '' }}">
+                        Profile
+                    </a>
+                </li>
                 <!-- Add New Functionalities here -->
             </ul>
         </aside>
