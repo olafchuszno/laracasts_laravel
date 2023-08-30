@@ -10,4 +10,9 @@ class ProfileController extends Controller
     {
         return view('profile.edit');
     }
+
+    public function update()
+    {
+        dd('Update action in ProfileController');
+    }
 }
