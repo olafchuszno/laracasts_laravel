@@ -36,6 +36,8 @@
 
                         <x-dropdown-item href="/bookmarks" :active="request()->is('posts/bookmarked')">Bookmarks</x-dropdown-item>
 
+                        <x-dropdown-item href="/profile" :active="request()->is('profile')">Profile</x-dropdown-item>
+
                         <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>
 
                     </x-dropdown>
