@@ -46,6 +46,7 @@ Route::post('sessions', [SessionsController::class, 'store'])->middleware('guest
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
 Route::get('profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::patch('profile', [ProfileController::class, 'update'])->middleware('auth');
 
 
 // Admin
