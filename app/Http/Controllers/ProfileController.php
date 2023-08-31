@@ -24,7 +24,8 @@ class ProfileController extends Controller
 
         // Validate the input
         $attributes = request()->validate([
-            'name' => ['required', 'max:255']
+            'name' => $user->avatar ? 'image' : ['required', 'image'],
+            'avatar' => 'required'
         ]);
 
         // Update the user's profile
