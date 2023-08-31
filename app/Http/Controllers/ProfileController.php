@@ -22,6 +22,9 @@ class ProfileController extends Controller
             back()->with('failure', 'Account not Found');
         }
 
+        // User was found, assign the first user from the Collection
+        $user = $user[0];
+
         // Validate the input
         $attributes = request()->validate([
             'name' => $user->avatar ? 'image' : ['required', 'image'],
