@@ -12,7 +12,7 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => User::find([
                 'id' => auth()->id()
-            ])
+            ])[0]
         ]);
     }
 
