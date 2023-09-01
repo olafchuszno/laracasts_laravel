@@ -9,7 +9,11 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        return view('profile.edit');
+        return view('profile.edit', [
+            'user' => User::find([
+                'id' => auth()->id()
+            ])
+        ]);
     }
 
     public function update()
