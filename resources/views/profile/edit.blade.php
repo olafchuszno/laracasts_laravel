@@ -8,7 +8,7 @@
             </heading>
         </div>
 
-        <form action="/profile" method="POST">
+        <form action="/profile" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
