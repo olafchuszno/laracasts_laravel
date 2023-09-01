@@ -22,7 +22,7 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex justify-between flex-shrink-1 items-center" style="width: 300px;">
+            <div class="mt-8 md:mt-0 flex justify-evenly flex-shrink-1 items-center" style="width: 350px;">
                 @auth
                     <x-dropdown>
                         <x-slot name="trigger">
