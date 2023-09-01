@@ -31,6 +31,9 @@ class ProfileController extends Controller
             'avatar' => $user->avatar ? 'image' : ['required', 'image']
         ]);
 
+        // Store User's Avatar and Update the attributes variable
+        $attributes['avatar'] = request()->file('avatar')->store('avatars');
+
         // Update the user's profile
         $user->update($attributes);
 
