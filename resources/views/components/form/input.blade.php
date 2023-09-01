@@ -1,7 +1,7 @@
-@props(['name', 'type' => 'text', 'label'])
+@props(['name', 'type' => 'text', 'label', 'class' => ''])
 
 
-<x-form.field>
+<x-form.field class="{{ $class }}">
 
     <x-form.label name="{{ $label ?? $name }}" />
     
