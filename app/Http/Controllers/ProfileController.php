@@ -27,12 +27,12 @@ class ProfileController extends Controller
 
         // Validate the input
         $attributes = request()->validate([
-            'name' => $user->avatar ? 'image' : ['required', 'image'],
-            'avatar' => 'required'
+            'name' => 'required',
+            'avatar' => $user->avatar ? 'image' : ['required', 'image']
         ]);
 
         // Update the user's profile
-        $user[0]->update($attributes);
+        $user->update($attributes);
 
         // redirect to the homepage
         return back()->with('success', 'Your name was Updated');
