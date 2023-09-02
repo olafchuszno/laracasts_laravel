@@ -35,6 +35,7 @@ class ProfileController extends Controller
             'avatar' => 'image'
         ]);
 
+        // Check whether the avatar was uploaded
         if (isset($attributes['avatar'])) {
 
             // Store User's Avatar and Update the attributes variable
