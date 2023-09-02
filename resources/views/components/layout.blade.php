@@ -22,7 +22,7 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex justify-evenly flex-shrink-1 items-center" style="width: 350px;">
+            <div class="mt-8 md:mt-0 flex justify-evenly flex-shrink-1 items-center" style="width: 400px;">
                 @auth
                     <x-dropdown>
                         <x-slot name="trigger">
@@ -45,6 +45,18 @@
                     <form id="logout-form" action="/logout" method="POST" class="hidden">
                         @csrf
                     </form>
+
+                    @if (auth()->user()->avatar)
+                        <div>
+                            <a href="/profile">
+                                <img src="{{ asset('storage/' . auth()->user()->avatar) }}" 
+                                    height="60" 
+                                    width="60" 
+                                    class="rounded-full"
+                                >
+                            </a>
+                        </div>
+                    @endif
 
                 @else
                     <a href="/register" class="text-s font-bold uppercase">Register</a>
