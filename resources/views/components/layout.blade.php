@@ -50,8 +50,8 @@
                         <div>
                             <a href="/profile">
                                 <img src="{{ asset('storage/' . auth()->user()->avatar) }}" 
-                                    height="60" 
-                                    width="60" 
+                                    height="50" 
+                                    width="50" 
                                     class="rounded-full"
                                 >
                             </a>
