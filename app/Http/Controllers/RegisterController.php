@@ -23,6 +23,9 @@ class RegisterController extends Controller
             'password' => ['required', 'max:255', 'min:7']
         ]);
 
+        // Store User's Avatar and Update the attributes variable
+        $attributes['avatar'] = request()->file('avatar')->store('avatars');
+
         $user = User::create($attributes);
 
         auth()->login($user);
