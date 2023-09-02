@@ -5,7 +5,10 @@
             @csrf
 
             <header class="flex items-center">
-                <img src="https://i.pravatar.cc/60?id={{ auth()->id() }}" 
+                <img src="{{ isset(auth()->user()->avatar) ?
+                        asset('storage/' . auth()->user()->avatar) :
+                        'https://i.pravatar.cc/60?id=' . $comment->user_id
+                    }}" 
                     alt="user's avatar"
                     width="40"
                     height="40"
