@@ -3,7 +3,10 @@
 <x-panel class="bg-gray-50">
     <article class="flex space-x-4">
         <div style="flex-shrink: 0">
-            <img src="https://i.pravatar.cc/60?id={{ $comment->user_id }}" 
+            <img src="{{ isset($comment->author->avatar) ?
+                    asset('storage/' . $comment->author->avatar) :
+                    'https://i.pravatar.cc/60?id=' . $comment->user_id
+                }}" 
                 alt="user's avatar"
                 width="60"
                 height="60"
