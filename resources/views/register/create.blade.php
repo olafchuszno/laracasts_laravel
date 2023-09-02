@@ -5,11 +5,13 @@
 
             <h1 class="text-center font-bold text-xl">Register!</h1>
 
-            <form method="POST" action="/register" class="mt-10">
+            <form method="POST" action="/register" class="mt-10" enctype="multipart/form-data">
 
                 @csrf
 
                 <x-form.input name="name">name</x-form.input>
+
+                <x-form.input type="file" name="avatar" label="Avatar (optional)"/>
 
                 <x-form.input name="username">username</x-form.input>
 
