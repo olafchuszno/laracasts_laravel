@@ -12,7 +12,7 @@
             @csrf
             @method('PATCH')
 
-            <x-form.input placeholder="Current name: {{ auth()->user()->username }}" label="New Name" name="name" />
+            <x-form.input placeholder="Current name: {{ auth()->user()->name }}" label="New Name" name="name" />
 
             <!-- TODO show user's avatar next to the form.input -->
             <div class="flex pt-2 pb-2 justify-between gap-5">
