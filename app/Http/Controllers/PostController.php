@@ -14,10 +14,15 @@ class PostController extends Controller
 
     public function index()
     {
+        $sortby = null;
+
+        if (request('sortby') == 'popularity') {
+            $sortby = 'view_count';
+        }
 
         // return a view with all of the posts and their categories
         return view('posts.index', [
-            'posts' => Post::latest()->filter(
+            'posts' => Post::latest($sortby)->filter(
                 request(['search', 'category', 'author'])
             )->paginate(6)->withQueryString()
         ]);

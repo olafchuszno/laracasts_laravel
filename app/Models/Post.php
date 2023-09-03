@@ -22,7 +22,7 @@ class Post extends Model
             $query->where(fn ($query) =>
                 $query->where('title', 'like', '%' . $search . '%')
                     ->orWhere('body', 'like', '%' . $search . '%')
-                )
+            )
         );
 
         $query->when($filters['category'] ?? false, fn($query, $category) => 
