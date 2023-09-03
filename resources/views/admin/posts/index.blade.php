@@ -18,15 +18,15 @@
                                             </div>
                                         </td>
 
-                                        <td class="text-gray-500 text-sm">
-                                            <p>{{ $post->view_count }}</p>
+                                        <td class="text-gray-500 text-xs px-2">
+                                            <p>Views:  {{ $post->view_count }}</p>
                                         </td>
 
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <td class="px-2 py-4 whitespace-nowrap text-center text-sm font-medium">
                                             <a href="/admin/posts/{{ $post->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
                                         </td>
 
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <td class="pr-4 py-4 whitespace-nowrap text-center text-sm font-medium">
                                             <form action="/admin/posts/{{ $post->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
