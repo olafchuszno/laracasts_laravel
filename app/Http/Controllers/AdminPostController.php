@@ -23,12 +23,14 @@ class AdminPostController extends Controller
         return view('admin.posts.create');
     }
 
-    public function store(Post $post)
+    public function store()
     {
-
+        // Merge the form attributes with the dynamic ones (and view_count)
+        // Create the post with those attributes 
         Post::create(array_merge($this->validatePost(), [
             'user_id' => request()->user()->id,
-            'thumbnail' => request()->file('thumbnail')->store('thumbnails')
+            'thumbnail' => request()->file('thumbnail')->store('thumbnails'),
+            'view_count' => 0
         ]));
 
         return redirect('/')->with('success', 'Your Post Was Created!');
@@ -45,14 +47,18 @@ class AdminPostController extends Controller
 
     public function update(Post $post)
     {
+        // Validate the admin's input and store it in attributes variable
         $attributes = $this->validatePost($post);
 
+        // If a thumbnail was uploaded, append it to the attributes and store it
         if (request('thumbnail') ?? false) {
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         }
 
+        // Update the post
         $post->update($attributes);
 
+        // Redirect back with a message
         return back()->with('success', 'Post Updated!');
 
     }
