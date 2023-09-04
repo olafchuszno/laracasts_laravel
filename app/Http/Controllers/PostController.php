@@ -14,10 +14,11 @@ class PostController extends Controller
 
     public function index()
     {
-        $sortby = null;
 
         if (request('sortby') == 'popularity') {
             $sortby = 'view_count';
+        } else {
+            $sortby = null;
         }
 
         // return a view with all of the posts and their categories
