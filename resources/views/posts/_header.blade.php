@@ -5,6 +5,39 @@
 
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
+
+    <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
+
+        <form method="GET" action="#">
+                @if (request('category'))
+                    <input type="hidden"
+                        name="category"
+                        value="{{ request('category') }}"
+                    >
+                @endif
+
+                @if (request('search'))
+                    <input type="hidden"
+                        name="search"
+                        value="{{ request('search') }}"
+                    >
+                @endif
+
+                
+                <input type="hidden"
+                    name="sortby"
+                    value="popularity"
+                >
+                
+            
+            <button type="submit">
+                Most popular
+            </button>
+            
+        </form>
+
+    </div>
+
         <!--  Category -->
         <div class="relative lg:flex lg:inline-flex bg-gray-100 rounded-xl">
             
@@ -33,6 +66,8 @@
                 </g>
             </svg>
         </div> -->
+
+        
 
         <!-- Search -->
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
